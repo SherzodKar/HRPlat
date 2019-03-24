@@ -1,0 +1,68 @@
+{% extends "employee/base.html" %}
+{% block content %}
+  <div class="wrapper drop">
+      <h4>Objective Page</h4>
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle introduction" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-on:click="intro = !intro">Introduction</a>
+        <div v-show="intro" class=" jumbotron mt-1 ml-3">
+            <span>Please, enter your 2018 goals under the appropriate category (Financial, Customer, Business Process, or Inovation & Learning).</span><br>
+            <span>Each goal should be assigned a weighting with a total of 100% for all goals.</span>
+        </div>
+      </div>
+      <div class="mt-3">
+          <span>Displaying objectives</span><br>
+            <div class="jumbotron mt-3">
+                <div class="row">
+                    <div class="col-sm">
+                        <span class="bold">Goal Name</span><br><br>
+                        <span>{{ employee_goal.GoalsName }} </span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Metrics</span><br><br>
+                        <span>{{ employee_goal.Metrics }} </span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Percent</span><br><br>
+                        <span>{{ employee_goal.Percent }} </span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Weight</span><br><br>
+                        <span>{{ employee_goal.Weight }} </span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Start Date</span><br><br>
+                        <span>{{ employee_goal.StartDate }}</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Status</span><br><br>
+                        <span>{{ employee_goal.Status }} </span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Actual</span><br><br>
+                        <span>{{ employee_goal.Actual }}</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="bold">Target</span><br><br>
+                        <span>{{ employee_goal.Target }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="btn btn-light" href="{% url 'goals-create' %}">Create a new goal</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-light" href="{% url 'goals-detail' user.id %}">Retrieve my goals</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-light" href="{% url 'goals-update' user.id %}">Update my goals</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-light" href="{% url 'goals-delete' user.id %}">Delete my goals</a>
+                    </div>
+                </div>
+            </div>
+      </div>
+  </div>
+{% endblock content %}

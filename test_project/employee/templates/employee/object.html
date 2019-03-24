@@ -1,0 +1,134 @@
+{% extends "employee/base.html" %}
+{% block content %}
+  <div  class="wrapper">
+    <div class="jumbotron wrap">
+      <div class="form-row">
+        <div class="col-md-6">
+          <img class="img-responsive rounded-circle" src="{{ employee_obj.worker.profile.image.url }}">
+        </div>
+        <div class="col-md-6 mt-3 mb-3 gen_info">
+          <span>{{ employee_obj.First_Name }}</span> 
+          <span>{{ employee_obj.Last_Name }}</span><br>
+          <span>{{ employee_obj.profession }}</span><br>
+          <span>{{ employee_obj.Location }}</span><br>
+          <span>{{ employee_obj.Business_Phone }}</span><br>
+          <span>{{ employee_obj.Birth_date }}</span><br>
+          <span>{{ employee_obj.Job_Title }}</span><br>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper mt-3 game">
+        <div class="form-row">
+            <div class="col xs-4">
+                <button class="btn btn-light" href = "#" v-on:click="seen1 = !seen1, seen2 = false, seen3 = false, seen4 = false">
+                    [[ personal ]]
+                </button>
+            </div>
+            <div class="col xs-4">
+                <button class="btn btn-light" href = "#" v-on:click="seen2 = !seen2, seen1 = false, seen3 = false, seen4 = false">
+                    [[ employment ]]
+                </button>
+            </div>    
+            <div class="col xs-4">
+                <button class="btn btn-light" href = "#" v-on:click="seen3 = !seen3, seen2 = false, seen1 = false, seen4 = false">
+                    [[ background ]]
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div v-show="seen1" class="form-row per_info">
+          <div class="col-md-4">
+            <h3>[[ personal ]]</h3>
+          </div>  
+          <div class="col-md-4">
+              <div class="row">
+                <div class="col-xs-2 mr-3">
+                  <span>Effective as of:</span><br>
+                  <span>Last Name</span><br>
+                  <span>Middle Name</span><br>
+                  <span>First Name</span><br>
+                  <span>Passport Surname</span><br>
+                  <span>Passport Given Name</span><br>
+                </div>
+                <div class="col-xs-2 ml-3">
+                  <span>{{ employee_obj.date_posted }} </span><br>
+                  <span>{{ employee_obj.Last_Name }}</span><br>
+                  <span>{{ employee_obj.Middle_Name }}</span><br>
+                  <span>{{ employee_obj.First_Name }}</span><br>
+                  <span>{{ employee_obj.Passport_Surname }}</span><br>
+                  <span>{{ employee_obj.Passport_Given_Name }}</span><br>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row ml-3">
+              <div class="col-xs-2 mr-3 ml-3">
+                <span>Nickname</span><br>
+                <span>Gender</span><br>
+                <span>Middle Name</span><br>
+                <span>Birth Date</span><br>
+                <span>Record Status</span><br>
+              </div>
+              <div class="col-xs-2 ml-3">
+                <span>{{ employee_obj.Nickname }} </span><br>
+                <span>{{ employee_obj.Gender }}</span><br>
+                <span>{{ employee_obj.Middle_Name }}</span><br>
+                <span>{{ employee_obj.Birth_date }}</span><br>
+                {% if employee_obj.Record_Status == 1 %}
+                  <span>Inactive</span><br>
+                {% else %}
+                  <span>Active</span><br>
+                {% endif %}  
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-show="seen2" class="form-row back_info">
+          <div class="col-md-6">
+            <h3>[[ employment ]]</h3>
+          </div>  
+          <div class="col-md-6">
+              <div class="row">
+                <div class="col-xs-2 mr-3">
+                  <span>Hire Date</span><br>
+                  <span>EmployeeID</span><br>
+                  <span>Job Title</span><br>
+                  <span>Profession</span><br>
+                  <span>Location</span><br>
+                </div>
+                <div class="col-xs-2 ml-3">
+                  <span>{{ employee_obj.Hire_Date }} </span><br>
+                  <span>{{ employee_obj.EmployeeID }}</span><br>
+                  <span>{{ employee_obj.Job_Title }}</span><br>
+                  <span>{{ employee_obj.profession }}</span><br>
+                  <span>{{ employee_obj.Location }} </span><br>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div v-show="seen3" class="form-row employ_info">
+            <div class="col-md-6">
+                <h3>[[ background ]]</h3>
+              </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-xs-2 mr-3">
+                <span>Birth Date</span><br>
+                <span>First Name</span><br>
+                <span>Last Name</span><br>
+                <span>Middle Name</span><br>
+                <span>Gender</span><br>
+              </div>
+              <div class="col-xs-2 ml-3">
+                <span>{{ employee_obj.Birth_date }} </span><br>
+                <span>{{ employee_obj.First_Name }}</span><br>
+                <span>{{ employee_obj.Last_Name }}</span><br>
+                <span>{{ employee_obj.Middle_Name }}</span><br>
+                <span>{{ employee_obj.Gender }} </span><br>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div> 
+{% endblock content %}

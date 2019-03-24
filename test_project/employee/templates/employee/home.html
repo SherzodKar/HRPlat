@@ -1,0 +1,23 @@
+{% extends "employee/base.html" %}
+{% block content %}
+  <div  class="wrapper">
+    {% for employee in employee_info %}
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ employee.worker.profile.image.url }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="{% url 'object' employee.worker.id %}">{{ employee.profession }}</a>
+            <small class="text-muted">{{ employee.date_posted|date:"F d, Y" }}</small>
+          </div>
+          <h2><a class="article-title" href="{% url 'object' employee.worker.id %}">{{ employee.First_Name }} {{ employee.Last_Name }}</a></h2>
+          <p class="article-content">{{ employee.Job_Title }} </p>
+          {% for goal in employee_goals %}
+            {% if goal.worker == employee.worker %}
+              <a class="nav-item nav-link" href="{% url 'goals' goal.id %}">Goal: {{ goal.GoalsName }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </article>
+  {% endfor %}
+  </div> 
+{% endblock content %}
